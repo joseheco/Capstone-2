@@ -1,6 +1,7 @@
 import './style.css';
-import 'boxicons';
+// import 'boxicons';
 
+import createModal from './modal.js';
 
 const url = 'https://www.themealdb.com/api/json/v1/1/filter.php?a=Canadian'
 
@@ -32,14 +33,28 @@ async function display(){
                        </div>
                        <p class="likes">0 likes</p>
                        <div class="btns">
-                       <button type="button" class="comment-btn">Comments</button>
+                       <button data-value="${meals[i].idMeal}" type="button" class="comment-btn">Comments</button>
                        </div>
      `
      
      displaySection.appendChild(card)
    }
-
 }
+
+
+
+const commentBtnEvent = async () => {
+   await display();
+   const commentBtns = document.querySelectorAll('.comment-btn');
+   commentBtns.forEach((element) => {
+   element.addEventListener('click', (e) => {
+      const idBtn = e.target.getAttribute('data-value');
+      createModal(idBtn);
+      console.log(idBtn) 
+   });
+   });
+};
+commentBtnEvent();
 
 display();
 

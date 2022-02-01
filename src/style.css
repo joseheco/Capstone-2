@@ -25,8 +25,8 @@
 .card > img{
     margin: 5px auto;
     border-radius: 5px;
-   width: 95%;
-   height: 35vh; 
+    width: 95%;
+    height: 35vh; 
 }
 
 .cardTitle{
@@ -40,4 +40,113 @@
 .likes{
     width: 96%;
     text-align: end;
+}
+
+.no-modal {
+    display: none;
+}
+
+.modal {
+    display: inline;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    width: 50%;
+    height: 80vh;
+    background-color: rgb(40, 63, 42);
+    margin: 100px auto;
+    position: relative;
+    border-radius: 5px;
+    overflow: auto;
+}
+
+.img-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modal-img {
+    max-width: 400px;
+    max-height: 400px;
+    margin-top: 15px;
+    border-radius: 10px;
+}
+
+.food-title {
+    margin-top: 25px;
+    color: white;
+}
+
+.preparation-title {
+    color: white;
+}
+
+.comments-title {
+    color: white;
+}
+
+.closeBtn {
+    position: absolute;
+    font-size: 25px;
+    top: 15px;
+    right: 20px;
+    color: white;
+    cursor: pointer;
+}
+
+.modal-details {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.prep-div {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+}
+
+.modal-prep {
+    max-height: 100px;
+    width: 500px;
+    overflow: auto;
+    background-color: rgba(241, 241, 241, 1);
+    border-radius: 2px;
+    text-align: center;
+    
+
+}
+
+.prep {
+    background-color: white;
+    justify-content: center;
+}
+
+.comments {
+    background-color: white;
+    display: flex;
+}
+
+.submit-btn {
+    width: 25%;
+    font-weight: bold;
+    margin: 15px auto 20px;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    border: none;
+    transition: all 0.5s;
 }
