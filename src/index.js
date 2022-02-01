@@ -55,6 +55,3 @@ const commentBtnEvent = async () => {
    });
 };
 commentBtnEvent();
-
-display();
-
