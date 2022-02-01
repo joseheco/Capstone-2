@@ -1,0 +1,43 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.meals{
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    gap: 50px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.card{
+    min-width: 23vw;
+    max-width: 24vw;
+    min-height: 60vh;
+    max-height: 61vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.card > img{
+    margin: 5px auto;
+    border-radius: 5px;
+   width: 95%;
+   height: 35vh; 
+}
+
+.cardTitle{
+    font-size: 12px;
+    padding: 5px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.likes{
+    width: 96%;
+    text-align: end;
+}

@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "@babel/core": "^7.16.12",
-    "babel-loader": "^8.2.3"
+    "babel-loader": "^8.2.3",
+    "boxicons": "^2.1.1"
   }
 }
