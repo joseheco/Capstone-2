@@ -64,7 +64,7 @@
 .modal-content {
     overflow: auto;
     height: 82vh;
-    width: 60%;
+    width: 620px;
     border-radius: 5px;
     margin: 100px auto;
     position: relative;
