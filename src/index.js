@@ -18,12 +18,14 @@ document.body.appendChild(img);
 
 async function display(){
    const meals = await  getObj;
-   console.log(meals)
    const displaySection = document.querySelector('.meals')
 
+   const overflo = document.querySelector('.container-meal')
+overflo.classList.remove('container-meal');
 
    for(let i = 0; i < meals.length; i+=1){
-   const card = document.createElement('div');
+
+     const card = document.createElement('div');
 
    card.classList.add('card');
    card.innerHTML = `<img src="${meals[i].strMealThumb}">
@@ -40,8 +42,25 @@ async function display(){
    displaySection.appendChild(card)
    }
 }
-const overflo = document.querySelector('.container-meal')
-overflo.classList.remove('container-meal');
+
+     const card = document.createElement('div');
+
+     card.classList.add('card');
+     card.innerHTML = `<img src="${meals[i].strMealThumb}">
+                       <div class="cardTitle">
+                       <h1>${meals[i].strMeal}</h1>
+                       <box-icon data-value="${meals[i].idMeal}" class="heart" name='heart'></box-icon>
+                       </div>
+                       <p class="likes">0 likes</p>
+                       <div class="btns">
+                       <button data-value="${meals[i].idMeal}" type="button" class="comment-btn">Comments</button>
+                       </div>
+     `
+     
+     displaySection.appendChild(card)
+   }
+}
+
 const commentBtnEvent = async () => {
    await display();
    const commentBtns = document.querySelectorAll('.comment-btn');
@@ -50,8 +69,28 @@ const commentBtnEvent = async () => {
       overflo.classList.add('container-meal');
       const idBtn = e.target.getAttribute('data-value');
       createModal(idBtn);
-      console.log(idBtn) 
    });
    });
 };
 commentBtnEvent();
+
+const likesUrl = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/ZsdppEqh4CnoIqF1n5yO/likes';
+
+async function displayLikes(){
+  const ids = await getObj;
+   const items = document.querySelectorAll('.heart');
+   items.forEach(item => {
+      item.addEventListener('click', (e) => {
+         const id = e.target.getAttribute('data-value');
+         fetch(likesUrl, {
+            method: 'POST',
+            body: JSON.stringify({"item_id": id}),
+            headers: {
+               'content-type': 'application/json',
+             }
+         })
+      })
+   })
+}
+
+displayLikes();
