@@ -3,19 +3,26 @@ const modalDiv = document.getElementById('modals');
 const getItem = async (id) => {
   const url = (`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`);
   const response = await fetch(url);
-  const parsed = await response.json();
-  return parsed.meals[0];
+  const result = await response.json();
+  return result.meals[0];
+};
+
+const commentsApi = async (id) => {
+    const comments = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/YVelr1C6jXi1hzKriDIQ/comments?item_id=${id}`;
+    const response = await fetch(comments);
+    const result = await response.json();
+    return result;
 };
 
 const createModal = async (id) => {
   modalDiv.classList.remove('no-modal');
   modalDiv.classList.add('modal');
 
-  const foodObject = await getItem(id);
-  const image = foodObject.strMealThumb;
-  const food = foodObject.strMeal;
+  const foodObj = await getItem(id);
+  const image = foodObj.strMealThumb;
+  const food = foodObj.strMeal;
   const prep = [];
-  prep.push(foodObject[`strInstructions`]);
+  prep.push(foodObj[`strInstructions`]);
 
   const modalContent = document.createElement('div');
   modalContent.classList.add('modal-content');
@@ -62,17 +69,29 @@ const createModal = async (id) => {
   prepStep.innerText = prep[0];
   modalPreparation.appendChild(prepStep);
   
-  const modalCommentsDiv = document.createElement('div');
-  modalCommentsDiv.classList.add('modal-comment-list-div');
-  modalDetails.appendChild(modalCommentsDiv);
+  const commentDiv = document.createElement('div');
+  commentDiv.classList.add('modal-comment-list-div');
+  modalDetails.appendChild(commentDiv);
 
   const commentTitle = document.createElement('h4');
   commentTitle.classList.add('comments-title');
   commentTitle.innerText = 'Comments';
-  modalCommentsDiv.appendChild(commentTitle);
-
-  const modalCommentList = document.createElement('div');
-  modalCommentsDiv.append(modalCommentList);
+  commentDiv.appendChild(commentTitle);
+  
+  const commentList = document.createElement('div');
+  commentList.classList.add('modal-comment-list');
+  commentDiv.append(commentList);
+  
+  const renderComments = async () => {
+    const comments = await commentsApi(id);
+        comments.forEach((elem) => {
+          const p = document.createElement('p');
+          p.classList.add('comments');
+          p.innerHTML = `${elem.username}: ${elem.comment}`;
+          commentList.appendChild(p);
+        });
+  }
+  renderComments();
 
   const modalCommentForm = document.createElement('div');
   modalCommentForm.classList.add('modal-comment');
@@ -101,15 +120,35 @@ const createModal = async (id) => {
   submitBtn.setAttribute('value', 'Submit');
   submitBtn.classList.add('submit-btn');
   modalCommentForm.appendChild(submitBtn);
+
+  submitBtn.addEventListener('click', async () => {
+    const postComments = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/YVelr1C6jXi1hzKriDIQ/comments';
+    await fetch(postComments, {
+      method: 'POST',
+      body: JSON.stringify({
+        item_id: id,
+        username: nameInput.value,
+        comment: commentInput.value,
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    });
+    commentList.innerHTML = '';
+    renderComments();
+    nameInput.value = '';
+    commentInput.value = '';
+  });
   
+  const overflo = document.querySelector('.container-meal')
   const closeBtn = document.createElement('a');
-  closeBtn.setAttribute('id', 'id-close');
   closeBtn.innerText = "X"
   closeBtn.classList.add('closeBtn');
   modalContent.appendChild(closeBtn);
   closeBtn.addEventListener('click', () => {
     modalDiv.classList.add('no-modal');
     modalDiv.classList.remove('modal');
+    overflo.classList.remove('container-meal');
     modalDiv.innerHTML = "";
   });
 

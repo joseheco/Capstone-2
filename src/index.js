@@ -20,8 +20,29 @@ async function display(){
    const meals = await  getObj;
    const displaySection = document.querySelector('.meals')
 
+   const overflo = document.querySelector('.container-meal')
+overflo.classList.remove('container-meal');
 
    for(let i = 0; i < meals.length; i+=1){
+
+     const card = document.createElement('div');
+
+   card.classList.add('card');
+   card.innerHTML = `<img src="${meals[i].strMealThumb}">
+                     <div class="cardTitle">
+                     <h1>${meals[i].strMeal}</h1>
+                     <box-icon name='heart'></box-icon>
+                     </div>
+                     <p class="likes">0 likes</p>
+                     <div class="btns">
+                     <button data-value="${meals[i].idMeal}" type="button" class="comment-btn">Comments</button>
+                     </div>
+   `
+   
+   displaySection.appendChild(card)
+   }
+}
+
      const card = document.createElement('div');
 
      card.classList.add('card');
@@ -45,6 +66,7 @@ const commentBtnEvent = async () => {
    const commentBtns = document.querySelectorAll('.comment-btn');
    commentBtns.forEach((element) => {
    element.addEventListener('click', (e) => {
+      overflo.classList.add('container-meal');
       const idBtn = e.target.getAttribute('data-value');
       createModal(idBtn);
    });
