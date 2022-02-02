@@ -1,5 +1,5 @@
 import './style.css';
-// import 'boxicons';
+import 'boxicons';
 
 import createModal from './modal.js';
 
@@ -23,31 +23,31 @@ async function display(){
 
 
    for(let i = 0; i < meals.length; i+=1){
-     const card = document.createElement('div');
+   const card = document.createElement('div');
 
-     card.classList.add('card');
-     card.innerHTML = `<img src="${meals[i].strMealThumb}">
-                       <div class="cardTitle">
-                       <h1>${meals[i].strMeal}</h1>
-                       <box-icon name='heart'></box-icon>
-                       </div>
-                       <p class="likes">0 likes</p>
-                       <div class="btns">
-                       <button data-value="${meals[i].idMeal}" type="button" class="comment-btn">Comments</button>
-                       </div>
-     `
-     
-     displaySection.appendChild(card)
+   card.classList.add('card');
+   card.innerHTML = `<img src="${meals[i].strMealThumb}">
+                     <div class="cardTitle">
+                     <h1>${meals[i].strMeal}</h1>
+                     <box-icon name='heart'></box-icon>
+                     </div>
+                     <p class="likes">0 likes</p>
+                     <div class="btns">
+                     <button data-value="${meals[i].idMeal}" type="button" class="comment-btn">Comments</button>
+                     </div>
+   `
+   
+   displaySection.appendChild(card)
    }
 }
-
-
-
+const overflo = document.querySelector('.container-meal')
+overflo.classList.remove('container-meal');
 const commentBtnEvent = async () => {
    await display();
    const commentBtns = document.querySelectorAll('.comment-btn');
    commentBtns.forEach((element) => {
    element.addEventListener('click', (e) => {
+      overflo.classList.add('container-meal');
       const idBtn = e.target.getAttribute('data-value');
       createModal(idBtn);
       console.log(idBtn) 

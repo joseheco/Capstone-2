@@ -3,6 +3,10 @@
     padding: 0;
 }
 
+.container-meal {
+    overflow: hidden;
+}
+
 .meals{
     display: flex;
     width: 100%;
@@ -58,13 +62,13 @@
 }
 
 .modal-content {
-    width: 50%;
-    height: 80vh;
-    background-color: rgb(40, 63, 42);
+    overflow: auto;
+    height: 82vh;
+    width: 60%;
+    border-radius: 5px;
     margin: 100px auto;
     position: relative;
-    border-radius: 5px;
-    overflow: auto;
+    background-color: rgb(40, 63, 42);
 }
 
 .img-div {
@@ -87,10 +91,14 @@
 
 .preparation-title {
     color: white;
+    margin-left: 7rem;
+    margin-bottom: 2rem;
 }
 
 .comments-title {
     color: white;
+    margin-right: 1rem;
+    margin-top: 2rem;
 }
 
 .closeBtn {
@@ -106,36 +114,72 @@
     margin-top: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-self: center;
     text-align: center;
+    justify-content: center;
+    margin-left: 0.8rem;
+}
+
+.modal-comment-list {
+    margin-left: 7rem;
+    max-height: 150px;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    overflow: auto;
+    background-color: rgba(241, 241, 241, 1);
+    border-radius: 5px;
+    width: 300px;
+    height: 100px;
+    margin-left: 10rem;
+}
+
+.modal-comment {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+    margin-left: 11.5rem;
 }
 
 .prep-div {
     text-align: center;
     display: flex;
     flex-direction: column;
+    margin-left: 3rem;
     max-width: 400px;
 }
 
 .modal-prep {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     max-height: 100px;
     width: 500px;
     overflow: auto;
     background-color: rgba(241, 241, 241, 1);
     border-radius: 2px;
-    text-align: center;
     
-
 }
 
 .prep {
     background-color: white;
-    justify-content: center;
+    text-align: center;
 }
 
 .comments {
     background-color: white;
     display: flex;
+}
+
+.comments:nth-child(odd) {
+    background-color: lightgrey;
+}
+
+.comment-input {
+    border-radius: 5px;
+    text-align: center;
+    margin: 5px auto;
+    height: 20px;
+    width: 200px;
 }
 
 .submit-btn {
