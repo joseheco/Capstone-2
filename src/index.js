@@ -1,5 +1,5 @@
 import './style.css';
-// import 'boxicons';
+import 'boxicons';
 
 import createModal from './modal.js';
 
@@ -18,7 +18,6 @@ document.body.appendChild(img);
 
 async function display(){
    const meals = await  getObj;
-   console.log(meals)
    const displaySection = document.querySelector('.meals')
 
 
@@ -29,7 +28,7 @@ async function display(){
      card.innerHTML = `<img src="${meals[i].strMealThumb}">
                        <div class="cardTitle">
                        <h1>${meals[i].strMeal}</h1>
-                       <box-icon name='heart'></box-icon>
+                       <box-icon data-value="${meals[i].idMeal}" class="heart" name='heart'></box-icon>
                        </div>
                        <p class="likes">0 likes</p>
                        <div class="btns">
@@ -41,8 +40,6 @@ async function display(){
    }
 }
 
-
-
 const commentBtnEvent = async () => {
    await display();
    const commentBtns = document.querySelectorAll('.comment-btn');
@@ -50,8 +47,28 @@ const commentBtnEvent = async () => {
    element.addEventListener('click', (e) => {
       const idBtn = e.target.getAttribute('data-value');
       createModal(idBtn);
-      console.log(idBtn) 
    });
    });
 };
 commentBtnEvent();
+
+const likesUrl = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/ZsdppEqh4CnoIqF1n5yO/likes';
+
+async function displayLikes(){
+  const ids = await getObj;
+   const items = document.querySelectorAll('.heart');
+   items.forEach(item => {
+      item.addEventListener('click', (e) => {
+         const id = e.target.getAttribute('data-value');
+         fetch(likesUrl, {
+            method: 'POST',
+            body: JSON.stringify({"item_id": id}),
+            headers: {
+               'content-type': 'application/json',
+             }
+         })
+      })
+   })
+}
+
+displayLikes();
