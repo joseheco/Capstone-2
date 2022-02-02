@@ -30,7 +30,7 @@ async function display(){
                        <h1>${meals[i].strMeal}</h1>
                        <box-icon data-value="${meals[i].idMeal}" class="heart" name='heart'></box-icon>
                        </div>
-                       <p class="likes">0 likes</p>
+                       <p data-value="${meals[i].idMeal}" class="likes"></p>
                        <div class="btns">
                        <button data-value="${meals[i].idMeal}" type="button" class="comment-btn">Comments</button>
                        </div>
@@ -55,8 +55,24 @@ commentBtnEvent();
 const likesUrl = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/ZsdppEqh4CnoIqF1n5yO/likes';
 
 async function displayLikes(){
+
   const ids = await getObj;
-   const items = document.querySelectorAll('.heart');
+  const items = document.querySelectorAll('.heart');
+  const likesP = document.querySelectorAll('.likes');
+
+
+  fetch(likesUrl).then(res => res.json()).then(data => {
+     console.log(data)
+   likesP.forEach(item => item.textContent = data.filter(obj => obj.item_id === item.getAttribute('data-value'))
+   [0].likes)
+     
+   })
+
+
+
+
+// add comment to api //
+
    items.forEach(item => {
       item.addEventListener('click', (e) => {
          const id = e.target.getAttribute('data-value');
@@ -66,6 +82,11 @@ async function displayLikes(){
             headers: {
                'content-type': 'application/json',
              }
+         }).then( () => {
+            fetch(likesUrl).then(res => res.json()).then(data => {data = data.filter(item => 
+               item.item_id === e.target.getAttribute('data-value'))
+               e.target.parentNode.nextSibling.nextSibling.innerHTML = data[0].likes;
+            })
          })
       })
    })
