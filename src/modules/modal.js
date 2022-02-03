@@ -1,17 +1,17 @@
 const modalDiv = document.getElementById('modals');
 
 const getItem = async (id) => {
-  const url = (`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`);
+  const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`;
   const response = await fetch(url);
   const result = await response.json();
   return result.meals[0];
 };
 
 const commentsApi = async (id) => {
-    const comments = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/YVelr1C6jXi1hzKriDIQ/comments?item_id=${id}`;
-    const response = await fetch(comments);
-    const result = await response.json();
-    return result;
+  const comments = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/YVelr1C6jXi1hzKriDIQ/comments?item_id=${id}`;
+  const response = await fetch(comments);
+  const result = await response.json();
+  return result;
 };
 
 const createModal = async (id) => {
@@ -68,7 +68,7 @@ const createModal = async (id) => {
   prepStep.classList.add('prep');
   prepStep.innerText = prep[0];
   modalPreparation.appendChild(prepStep);
-  
+
   const commentDiv = document.createElement('div');
   commentDiv.classList.add('modal-comment-list-div');
   modalDetails.appendChild(commentDiv);
@@ -77,20 +77,20 @@ const createModal = async (id) => {
   commentTitle.classList.add('comments-title');
   commentTitle.innerText = 'Comments';
   commentDiv.appendChild(commentTitle);
-  
+
   const commentList = document.createElement('div');
   commentList.classList.add('modal-comment-list');
   commentDiv.append(commentList);
-  
+
   const renderComments = async () => {
     const comments = await commentsApi(id);
-        comments.forEach((elem) => {
-          const p = document.createElement('p');
-          p.classList.add('comments');
-          p.innerHTML = `${elem.username}: ${elem.comment}`;
-          commentList.appendChild(p);
-        });
-  }
+    comments.forEach((elem) => {
+      const p = document.createElement('p');
+      p.classList.add('comments');
+      p.innerHTML = `${elem.username}: ${elem.comment}`;
+      commentList.appendChild(p);
+    });
+  };
   renderComments();
 
   const modalCommentForm = document.createElement('div');
@@ -122,7 +122,8 @@ const createModal = async (id) => {
   modalCommentForm.appendChild(submitBtn);
 
   submitBtn.addEventListener('click', async () => {
-    const postComments = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/YVelr1C6jXi1hzKriDIQ/comments';
+    const postComments =
+      'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/YVelr1C6jXi1hzKriDIQ/comments';
     await fetch(postComments, {
       method: 'POST',
       body: JSON.stringify({
@@ -139,19 +140,18 @@ const createModal = async (id) => {
     nameInput.value = '';
     commentInput.value = '';
   });
-  
-  const overflo = document.querySelector('.container-meal')
+
+  const overflo = document.querySelector('.container-meal');
   const closeBtn = document.createElement('a');
-  closeBtn.innerText = "X"
+  closeBtn.innerText = 'X';
   closeBtn.classList.add('closeBtn');
   modalContent.appendChild(closeBtn);
   closeBtn.addEventListener('click', () => {
     modalDiv.classList.add('no-modal');
     modalDiv.classList.remove('modal');
     overflo.classList.remove('container-meal');
-    modalDiv.innerHTML = "";
+    modalDiv.innerHTML = '';
   });
-
 };
 
 export default createModal;
