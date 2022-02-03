@@ -194,3 +194,9 @@
     border: none;
     transition: all 0.5s;
 }
+
+.counter-cont{
+    text-align: center;
+    margin: 25px 0;
+    font-size: 25px;
+}
