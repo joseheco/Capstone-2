@@ -1,14 +1,17 @@
-const commentsApi = async () => {
-  const comments = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/YVelr1C6jXi1hzKriDIQ/comments?item_id=52933`;
-  const response = comments;
-  const result = await response.json();
-  return result;
-};
+const commentsAPi = [{"creation_date":"2022-02-02",
+"username":"Jose","comment":"Great Food"},
+{"comment":"Great Food","username":"Jose",
+"creation_date":"2022-02-02"},{"comment":
+"I dont like it","creation_date":"2022-02-02",
+"username":"Fernando"},{"username":"Jose",
+"comment":"i want this plate","creation_date":"2022-02-02"},
+{"comment":"ok","username":"Raul","creation_date":"2022-02-02"},
+{"comment":"First time I try this food, I liked it a lot, I think I will try it again very soon.",
+"username":"Raul","creation_date":"2022-02-02"}]
 
 const counterComment = () => {
-  const comments = commentsApi();
-  return comments.length;
+  const comment = commentsAPi;
+  return comment.length;
 };
 
-
-export { counterComment };
+module.exports = counterComment;
