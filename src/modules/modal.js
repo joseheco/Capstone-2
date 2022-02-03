@@ -1,5 +1,3 @@
-import { commentsApi, renderCounter } from './popUpCounter.js'
-
 const modalDiv = document.getElementById('modals');
 
 const getItem = async (id) => {
@@ -77,16 +75,14 @@ const createModal = async (id) => {
 
   const commentTitle = document.createElement('h4');
   commentTitle.classList.add('comments-title');
+  commentTitle.innerText = 'Comments';
   commentDiv.appendChild(commentTitle);
 
-  renderCounter(commentTitle, id);
-  
   const commentList = document.createElement('div');
   commentList.classList.add('modal-comment-list');
   commentDiv.append(commentList);
 
   const renderComments = async () => {
-
     const comments = await commentsApi(id);
     comments.forEach((elem) => {
       const p = document.createElement('p');
@@ -95,28 +91,7 @@ const createModal = async (id) => {
       commentList.appendChild(p);
     });
   };
-     try {
-      const comments = await commentsApi(id);
-      // if (comments.error) {
-      //   const error = document.createElement('p');
-      //   error.innerHTML = 'Enter the first Comment!';
-      //   error.classList.add('comments');
-      //   commentList.appendChild(error);
-      // } else {
-        comments.forEach((elem) => {
-          const p = document.createElement('p');
-          p.classList.add('comments');
-          p.innerHTML = `${elem.username}: ${elem.comment}`;
-          commentList.appendChild(p);
-        });
-      // }
-    } catch(err) {
-      console.error("nada");
-    }
-    
-  }
-
-renderComments();
+  renderComments();
 
   const modalCommentForm = document.createElement('div');
   modalCommentForm.classList.add('modal-comment');
@@ -160,7 +135,6 @@ renderComments();
         'Content-type': 'application/json; charset=UTF-8',
       },
     });
-    
     commentList.innerHTML = '';
     renderComments();
     nameInput.value = '';
