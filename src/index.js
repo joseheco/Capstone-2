@@ -28,9 +28,9 @@ async function display(){
    card.innerHTML = `<img src="${meals[i].strMealThumb}">
                      <div class="cardTitle">
                      <h1>${meals[i].strMeal}</h1>
-                     <box-icon name='heart'></box-icon>
+                     <box-icon data-value="${meals[i].idMeal}" class="heart" name='heart'></box-icon>
                      </div>
-                     <p class="likes">0 likes</p>
+                     <p data-value="${meals[i].idMeal}" class="likes">0 likes</p>
                      <div class="btns">
                      <button data-value="${meals[i].idMeal}" type="button" class="comment-btn">Comments</button>
                      </div>
@@ -65,14 +65,13 @@ async function displayLikes(){
 
 
   fetch(likesUrl).then(res => res.json()).then(data => {
-     console.log(data)
    likesP.forEach(item => item.textContent = data.filter(obj => obj.item_id === item.getAttribute('data-value'))
    [0].likes)
      
    })
 
 
-// add comment to api //
+// add like to api //
 
    items.forEach(item => {
       item.addEventListener('click', (e) => {
