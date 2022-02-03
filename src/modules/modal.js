@@ -1,4 +1,4 @@
-import { commentsApi, renderCounter } from './popUpCounter.js'
+import { commentsApi, renderCounter } from './popUpCounter.js';
 
 const modalDiv = document.getElementById('modals');
 
@@ -81,23 +81,18 @@ const createModal = async (id) => {
   const renderComments = async () => {
     try {
       const comments = await commentsApi(id);
-      // if (comments.error) {
-      //   const error = document.createElement('p');
-      //   error.innerHTML = 'Enter the first Comment!';
-      //   error.classList.add('comments');
-      //   commentList.appendChild(error);
-      // } else {
         comments.forEach((elem) => {
           const p = document.createElement('p');
           p.classList.add('comments');
           p.innerHTML = `${elem.username}: ${elem.comment}`;
           commentList.appendChild(p);
         });
-      // }
     } catch(err) {
-      console.error("nada");
+      const error = document.createElement('p');
+        error.innerHTML = 'Enter the first Comment!';
+        error.classList.add('comments');
+        commentList.appendChild(error);
     }
-    
   }
   renderComments();
 
@@ -141,26 +136,25 @@ const createModal = async (id) => {
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
       },
-    });
-    
-    commentList.innerHTML = '';
-    renderComments();
-    nameInput.value = '';
-    commentInput.value = '';
   });
-  
-  const overflo = document.querySelector('.container-meal')
+
+  commentList.innerHTML = '';
+  renderComments();
+  nameInput.value = '';
+  commentInput.value = '';
+});
+
+  const overflo = document.querySelector('.container-meal');
   const closeBtn = document.createElement('a');
-  closeBtn.innerText = "X"
+  closeBtn.innerText = "X";
   closeBtn.classList.add('closeBtn');
   modalContent.appendChild(closeBtn);
   closeBtn.addEventListener('click', () => {
     modalDiv.classList.add('no-modal');
     modalDiv.classList.remove('modal');
     overflo.classList.remove('container-meal');
-    modalDiv.innerHTML = "";
+    modalDiv.innerHTML = '';
   });
-
 };
 
 export default createModal;
