@@ -2,23 +2,20 @@
  * @jest-environment jsdom
  */
 
-const homeCounter = require('./__mocks__/homeCounter');
-
+const homeCounter = require('./__mocks__/homeCounter.js');
 
 test('n should equal 4', () => {
-   const section = document.createElement('section');
-   section.innerHTML = `
+  const section = document.createElement('section');
+  section.innerHTML = `
    <div class="card"></div>
    <div class="card"></div>
    <div class="card"></div>
    <div class="card"></div>
-   `
+   `;
 
-   document.body.appendChild(section)
+  document.body.appendChild(section);
 
-   const n = homeCounter();
+  const n = homeCounter();
 
-   expect(n).toEqual(4)
-
-
-})
+  expect(n).toEqual(4);
+});

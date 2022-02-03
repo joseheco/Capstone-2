@@ -4,7 +4,7 @@
 
 const counterComment = require('./__mocks__/counterComment.js');
 
-test ('comment should be = 6', () => {
+test('comment should be = 6', () => {
   const div = document.createElement('p');
   div.innerHTML = `
   <p class="comments"></p>
@@ -13,17 +13,11 @@ test ('comment should be = 6', () => {
   <p class="comments"></p>
   <p class="comments"></p>
   <p class="comments"></p>
-  `
+  `;
 
-  document.body.appendChild(div)
+  document.body.appendChild(div);
 
   const n = counterComment();
 
-  expect(n).toEqual(6)
-
-
-}) 
-
-
-
-
+  expect(n).toEqual(6);
+});

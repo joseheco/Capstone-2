@@ -17,7 +17,7 @@ const createModal = async (id) => {
   const image = foodObj.strMealThumb;
   const food = foodObj.strMeal;
   const prep = [];
-  prep.push(foodObj[`strInstructions`]);
+  prep.push(foodObj.strInstructions);
 
   const modalContent = document.createElement('div');
   modalContent.classList.add('modal-content');
@@ -61,9 +61,9 @@ const createModal = async (id) => {
 
   const prepStep = document.createElement('p');
   prepStep.classList.add('prep');
-  prepStep.innerText = prep[0];
+  [prepStep.innerText] = [prep];
   modalPreparation.appendChild(prepStep);
-  
+
   const commentDiv = document.createElement('div');
   commentDiv.classList.add('modal-comment-list-div');
   modalDetails.appendChild(commentDiv);
@@ -73,27 +73,27 @@ const createModal = async (id) => {
   commentDiv.appendChild(commentTitle);
 
   renderCounter(commentTitle, id);
-  
+
   const commentList = document.createElement('div');
   commentList.classList.add('modal-comment-list');
   commentDiv.append(commentList);
-  
+
   const renderComments = async () => {
     try {
       const comments = await commentsApi(id);
-        comments.forEach((elem) => {
-          const p = document.createElement('p');
-          p.classList.add('comments');
-          p.innerHTML = `${elem.username}: ${elem.comment}`;
-          commentList.appendChild(p);
-        });
-    } catch(err) {
+      comments.forEach((elem) => {
+        const p = document.createElement('p');
+        p.classList.add('comments');
+        p.innerHTML = `${elem.username}: ${elem.comment}`;
+        commentList.appendChild(p);
+      });
+    } catch (err) {
       const error = document.createElement('p');
-        error.innerHTML = 'Enter the first Comment!';
-        error.classList.add('comments');
-        commentList.appendChild(error);
+      error.innerHTML = 'Enter the first Comment!';
+      error.classList.add('comments');
+      commentList.appendChild(error);
     }
-  }
+  };
   renderComments();
 
   const modalCommentForm = document.createElement('div');
@@ -136,17 +136,17 @@ const createModal = async (id) => {
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
       },
-  });
+    });
 
-  commentList.innerHTML = '';
-  renderComments();
-  nameInput.value = '';
-  commentInput.value = '';
-});
+    commentList.innerHTML = '';
+    renderComments();
+    nameInput.value = '';
+    commentInput.value = '';
+  });
 
   const overflo = document.querySelector('.container-meal');
   const closeBtn = document.createElement('a');
-  closeBtn.innerText = "X";
+  closeBtn.innerText = 'X';
   closeBtn.classList.add('closeBtn');
   modalContent.appendChild(closeBtn);
   closeBtn.addEventListener('click', () => {

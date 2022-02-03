@@ -12,7 +12,7 @@ const counterComment = async (id) => {
 
 const renderCounter = async (element, id) => {
   const numberCounter = await counterComment(id);
-    element.innerHTML = `(${numberCounter}) Comments`;
+  element.innerHTML = `(${numberCounter}) Comments`;
 };
 
 export { commentsApi, renderCounter };
