@@ -1,202 +1,200 @@
-*{
-    margin: 0;
-    padding: 0;
+* {
+  margin: 0;
+  padding: 0;
 }
 
 .container-meal {
-    overflow: hidden;
+  overflow: hidden;
 }
 
-.meals{
-    display: flex;
-    width: 100%;
-    height: 100vh;
-    gap: 50px;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
+.meals {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  gap: 50px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 }
 
-.card{
-    min-width: 23vw;
-    max-width: 24vw;
-    min-height: 60vh;
-    max-height: 61vh;
-    display: flex;
-    flex-direction: column;
+.card {
+  min-width: 23vw;
+  max-width: 24vw;
+  min-height: 60vh;
+  max-height: 61vh;
+  display: flex;
+  flex-direction: column;
 }
 
-.card > img{
-    margin: 5px auto;
-    border-radius: 5px;
-    width: 95%;
-    height: 35vh; 
+.card > img {
+  margin: 5px auto;
+  border-radius: 5px;
+  width: 95%;
+  height: 35vh;
 }
 
-.cardTitle{
-    font-size: 12px;
-    padding: 5px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.cardTitle {
+  font-size: 12px;
+  padding: 5px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.likes{
-    width: 96%;
-    text-align: end;
+.likes {
+  width: 96%;
+  text-align: end;
 }
 
 .no-modal {
-    display: none;
+  display: none;
 }
 
 .modal {
-    display: inline;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
+  display: inline;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .modal-content {
-    overflow: auto;
-    height: 82vh;
-    width: 620px;
-    border-radius: 5px;
-    margin: 100px auto;
-    position: relative;
-    background-color: rgb(40, 63, 42);
+  overflow: auto;
+  height: 82vh;
+  width: 620px;
+  border-radius: 5px;
+  margin: 100px auto;
+  position: relative;
+  background-color: rgb(40, 63, 42);
 }
 
 .img-div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .modal-img {
-    max-width: 400px;
-    max-height: 400px;
-    margin-top: 15px;
-    border-radius: 10px;
+  max-width: 400px;
+  max-height: 400px;
+  margin-top: 15px;
+  border-radius: 10px;
 }
 
 .food-title {
-    margin-top: 25px;
-    color: white;
+  margin-top: 25px;
+  color: white;
 }
 
 .preparation-title {
-    color: white;
-    margin-left: 7rem;
-    margin-bottom: 2rem;
+  color: white;
+  margin-left: 7rem;
+  margin-bottom: 2rem;
 }
 
 .comments-title {
-    color: white;
-    margin-right: 1rem;
-    margin-top: 2rem;
+  color: white;
+  margin-right: 1rem;
+  margin-top: 2rem;
 }
 
 .closeBtn {
-    position: absolute;
-    font-size: 25px;
-    top: 15px;
-    right: 20px;
-    color: white;
-    cursor: pointer;
+  position: absolute;
+  font-size: 25px;
+  top: 15px;
+  right: 20px;
+  color: white;
+  cursor: pointer;
 }
 
 .modal-details {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    align-self: center;
-    text-align: center;
-    justify-content: center;
-    margin-left: 0.8rem;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  text-align: center;
+  justify-content: center;
+  margin-left: 0.8rem;
 }
 
 .modal-comment-list {
-    margin-left: 7rem;
-    max-height: 150px;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    overflow: auto;
-    background-color: rgba(241, 241, 241, 1);
-    border-radius: 5px;
-    width: 300px;
-    height: 100px;
-    margin-left: 10rem;
+  max-height: 150px;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  overflow: auto;
+  background-color: rgba(241, 241, 241, 1);
+  border-radius: 5px;
+  width: 300px;
+  height: 100px;
+  margin-left: 10rem;
 }
 
 .modal-comment {
-    display: flex;
-    flex-direction: column;
-    width: 45%;
-    margin-left: 11.5rem;
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+  margin-left: 11.5rem;
 }
 
 .prep-div {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    margin-left: 3rem;
-    max-width: 400px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  margin-left: 3rem;
+  max-width: 400px;
 }
 
 .modal-prep {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-height: 100px;
-    width: 500px;
-    overflow: auto;
-    background-color: rgba(241, 241, 241, 1);
-    border-radius: 2px;
-    
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-height: 100px;
+  width: 500px;
+  overflow: auto;
+  background-color: rgba(241, 241, 241, 1);
+  border-radius: 2px;
 }
 
 .prep {
-    background-color: white;
-    text-align: center;
+  background-color: white;
+  text-align: center;
 }
 
 .comments {
-    background-color: white;
-    display: flex;
+  background-color: white;
+  display: flex;
 }
 
 .comments:nth-child(odd) {
-    background-color: lightgrey;
+  background-color: lightgrey;
 }
 
 .comment-input {
-    border-radius: 5px;
-    text-align: center;
-    margin: 5px auto;
-    height: 20px;
-    width: 200px;
+  border-radius: 5px;
+  text-align: center;
+  margin: 5px auto;
+  height: 20px;
+  width: 200px;
 }
 
 .submit-btn {
-    width: 25%;
-    font-weight: bold;
-    margin: 15px auto 20px;
-    border-radius: 5px;
-    background-color: black;
-    color: white;
-    text-decoration: none;
-    padding: 10px;
-    border: none;
-    transition: all 0.5s;
+  width: 25%;
+  font-weight: bold;
+  margin: 15px auto 20px;
+  border-radius: 5px;
+  background-color: black;
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  border: none;
+  transition: all 0.5s;
 }
 
-.counter-cont{
-    text-align: center;
-    margin: 25px 0;
-    font-size: 25px;
+.counter-cont {
+  text-align: center;
+  margin: 25px 0;
+  font-size: 25px;
 }
