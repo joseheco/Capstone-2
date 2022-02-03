@@ -1,5 +1,5 @@
-import display from './display';
-import createModal from './modal';
+import display from './display.js';
+import createModal from './modal.js';
 
 const overflo = document.querySelector('.container-meal');
 overflo.classList.remove('container-meal');

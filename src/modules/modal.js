@@ -22,7 +22,7 @@ const createModal = async (id) => {
   const image = foodObj.strMealThumb;
   const food = foodObj.strMeal;
   const prep = [];
-  prep.push(foodObj[`strInstructions`]);
+  prep.push(foodObj.strInstructions);
 
   const modalContent = document.createElement('div');
   modalContent.classList.add('modal-content');
@@ -66,7 +66,7 @@ const createModal = async (id) => {
 
   const prepStep = document.createElement('p');
   prepStep.classList.add('prep');
-  prepStep.innerText = prep[0];
+  [prepStep.innerText] = [prep];
   modalPreparation.appendChild(prepStep);
 
   const commentDiv = document.createElement('div');
@@ -122,8 +122,7 @@ const createModal = async (id) => {
   modalCommentForm.appendChild(submitBtn);
 
   submitBtn.addEventListener('click', async () => {
-    const postComments =
-      'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/YVelr1C6jXi1hzKriDIQ/comments';
+    const postComments = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/YVelr1C6jXi1hzKriDIQ/comments';
     await fetch(postComments, {
       method: 'POST',
       body: JSON.stringify({

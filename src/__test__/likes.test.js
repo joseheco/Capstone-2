@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-const homeCounter = require('./__mocks__/homeCounter');
+const homeCounter = require('./__mocks__/homeCounter.js');
 
 test('1 should equal 1', () => {
   const section = document.createElement('section');
