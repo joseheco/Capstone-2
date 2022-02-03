@@ -23,5 +23,6 @@ async function display(){
     displaySection.appendChild(card)
     }
  }
- 
+console.log()
+
  export default display;

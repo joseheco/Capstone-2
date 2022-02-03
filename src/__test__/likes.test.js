@@ -5,7 +5,7 @@
 const homeCounter = require('./__mocks__/homeCounter');
 
 
-test('1 should equal 1', () => {
+test('n should equal 4', () => {
    const section = document.createElement('section');
    section.innerHTML = `
    <div class="card"></div>
