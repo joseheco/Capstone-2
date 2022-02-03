@@ -1,3 +1,5 @@
+import { commentsApi, renderCounter } from './popUpCounter.js'
+
 const modalDiv = document.getElementById('modals');
 
 const getItem = async (id) => {
@@ -5,13 +7,6 @@ const getItem = async (id) => {
   const response = await fetch(url);
   const result = await response.json();
   return result.meals[0];
-};
-
-const commentsApi = async (id) => {
-    const comments = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/YVelr1C6jXi1hzKriDIQ/comments?item_id=${id}`;
-    const response = await fetch(comments);
-    const result = await response.json();
-    return result;
 };
 
 const createModal = async (id) => {
@@ -75,21 +70,34 @@ const createModal = async (id) => {
 
   const commentTitle = document.createElement('h4');
   commentTitle.classList.add('comments-title');
-  commentTitle.innerText = 'Comments';
   commentDiv.appendChild(commentTitle);
+
+  renderCounter(commentTitle, id);
   
   const commentList = document.createElement('div');
   commentList.classList.add('modal-comment-list');
   commentDiv.append(commentList);
   
   const renderComments = async () => {
-    const comments = await commentsApi(id);
+    try {
+      const comments = await commentsApi(id);
+      // if (comments.error) {
+      //   const error = document.createElement('p');
+      //   error.innerHTML = 'Enter the first Comment!';
+      //   error.classList.add('comments');
+      //   commentList.appendChild(error);
+      // } else {
         comments.forEach((elem) => {
           const p = document.createElement('p');
           p.classList.add('comments');
           p.innerHTML = `${elem.username}: ${elem.comment}`;
           commentList.appendChild(p);
         });
+      // }
+    } catch(err) {
+      console.error("nada");
+    }
+    
   }
   renderComments();
 
@@ -134,6 +142,7 @@ const createModal = async (id) => {
         'Content-type': 'application/json; charset=UTF-8',
       },
     });
+    
     commentList.innerHTML = '';
     renderComments();
     nameInput.value = '';
