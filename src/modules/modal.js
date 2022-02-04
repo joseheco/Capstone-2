@@ -1,6 +1,5 @@
 import { commentsApi, renderCounter } from './popUpCounter.js';
 
-
 const modalDiv = document.getElementById('modals');
 
 const getItem = async (id) => {
@@ -140,7 +139,7 @@ const createModal = async (id) => {
     });
 
     commentList.innerHTML = '';
-    renderCounter(commentTitle, id)
+    renderCounter(commentTitle, id);
     renderComments();
     nameInput.value = '';
     commentInput.value = '';
@@ -148,7 +147,7 @@ const createModal = async (id) => {
 
   const overflo = document.querySelector('.container');
   const closeBtn = document.createElement('p');
-  closeBtn.innerHTML = `&#x2715`;
+  closeBtn.innerHTML = '&#x2715';
   closeBtn.classList.add('closeBtn');
   modalContent.appendChild(closeBtn);
   closeBtn.addEventListener('click', () => {

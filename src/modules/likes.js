@@ -9,7 +9,7 @@ async function displayLikes() {
 
   fetch(likesUrl).then((res) => res.json()).then((data) => {
     likesP.forEach((item) => {
-      item.textContent = data.filter((obj) => obj.item_id === item.getAttribute('data-value'))[0].likes + ' likes';
+      item.textContent = `${data.filter((obj) => obj.item_id === item.getAttribute('data-value'))[0].likes} likes`;
     });
   });
 
@@ -27,7 +27,7 @@ async function displayLikes() {
       }).then(() => {
         fetch(likesUrl).then((res) => res.json()).then((data) => {
           data = data.filter((item) => item.item_id === e.target.getAttribute('data-value'));
-          e.target.parentNode.nextSibling.nextSibling.innerHTML = data[0].likes + ' likes';
+          e.target.parentNode.nextSibling.nextSibling.innerHTML = `${data[0].likes} likes`;
         });
       });
     });
