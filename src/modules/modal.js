@@ -1,5 +1,6 @@
 import { commentsApi, renderCounter } from './popUpCounter.js';
 
+
 const modalDiv = document.getElementById('modals');
 
 const getItem = async (id) => {
@@ -139,20 +140,21 @@ const createModal = async (id) => {
     });
 
     commentList.innerHTML = '';
+    renderCounter(commentTitle, id)
     renderComments();
     nameInput.value = '';
     commentInput.value = '';
   });
 
-  const overflo = document.querySelector('.container-meal');
-  const closeBtn = document.createElement('a');
-  closeBtn.innerText = 'X';
+  const overflo = document.querySelector('.container');
+  const closeBtn = document.createElement('p');
+  closeBtn.innerHTML = `&#x2715`;
   closeBtn.classList.add('closeBtn');
   modalContent.appendChild(closeBtn);
   closeBtn.addEventListener('click', () => {
     modalDiv.classList.add('no-modal');
     modalDiv.classList.remove('modal');
-    overflo.classList.remove('container-meal');
+    overflo.classList.remove('container');
     modalDiv.innerHTML = '';
   });
 };
