@@ -4,7 +4,7 @@ const getObj = new Promise((resolve) => {
   fetch(url)
     .then((res) => res.json())
     .then((data) => {
-      resolve(data.meals.slice(7));
+      resolve(data.meals);
     });
 });
 
