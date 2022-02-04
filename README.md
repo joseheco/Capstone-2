@@ -4,6 +4,7 @@
 
 In this capstone we worked with gitflow in a project that displays items from an API and let you add likes and comments to them
 
+![screenshot](./app_screenshot.png)
 
 ## Built With
 
@@ -14,11 +15,9 @@ In this capstone we worked with gitflow in a project that displays items from an
 
 [Live Demo Link](https://joseheco.github.io/Capstone-2/)
 
-
 ## Getting Started
 
 To get a local copy up and running follow these simple example steps.
-
 
 ### Setup
 
@@ -42,7 +41,6 @@ To run tests cases Run the comman 'npm run test'
 
 - GitHub: [@lisandroseia](https://github.com/lisandroseia)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/lisandro-seia-295120225/)
-
 
 👤 **Author2**
 
