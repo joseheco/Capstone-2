@@ -1,6 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Comforter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quintessential&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
+
 * {
   margin: 0;
   padding: 0;
+  font-family: 'Quintessential', cursive;
 }
 
 .container {
@@ -10,7 +15,7 @@
 .meals {
   display: flex;
   width: 100%;
-  height: 100vh;
+  height: auto;
   gap: 50px;
   flex-wrap: wrap;
   align-items: center;
@@ -24,6 +29,9 @@
   max-height: 61vh;
   display: flex;
   flex-direction: column;
+  border: 4px solid #F37A5D;
+  border-radius: 5%;
+  padding: 10px;
 }
 
 .card > img {
@@ -44,6 +52,38 @@
 .likes {
   width: 96%;
   text-align: end;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.comment-btn{
+  background-color: #fff;
+  font-weight: bold;
+  width: 80%;
+  height: 40px;
+  border: 3px solid #f37a5d;
+  border-radius: 5px;
+}
+
+.comment-btn:hover{
+  cursor: pointer;
+  box-shadow: 1px 1px 14px -2px rgba(243,122,93,1);
+-webkit-box-shadow: 1px 1px 14px -2px rgba(243,122,93,1);
+-moz-box-shadow: 1px 1px 14px -2px rgba(243,122,93,1);
+
+}
+
+.heart:hover{
+  cursor: pointer;
+}
+
+.btns{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
 }
 
 .no-modal {
@@ -65,10 +105,10 @@
   overflow: auto;
   height: 82vh;
   width: 620px;
-  border-radius: 5px;
   margin: 100px auto;
   position: relative;
-  background-color: rgba(218, 163, 114, 0.981);
+  background-color: #F37A5D;
+  border-radius: 5% 0 0 5%;
 }
 
 .img-div {
@@ -206,12 +246,58 @@
 }
 
 footer {
-  position: fixed;
-  bottom: 0;
   width: 100%;
-  background:#edd1a7;
-  color:black;
+  background:#F37A5D;
   text-align:center; 
   font-weight:bold;
   line-height:20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px 5px 0 0;
+  height: 70px;
+  margin-top: 20px;
+}
+
+footer > div{
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  color: #fff;
+}
+
+header{
+  width: 90%;
+  margin: auto;
+  height: 80px;
+  display: flex;
+  gap: 50px;
+  justify-content: start;
+  align-items: center;
+  border-bottom: 2px solid #F37A5D;
+  margin-bottom: 40px;
+}
+
+.logo-img{
+  background: url(./food.svg) no-repeat center center;
+  background-size: 100% 100%;
+  width: 60px;
+  height: 60px;
+}
+
+.logo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #F37A5D;
+  font-size: 25px;
+  gap: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  font-family: 'Comforter', cursive;
+}
+
+.home-counter-p{
+  font-size: 20px;
+  text-align: center;
 }

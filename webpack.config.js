@@ -10,7 +10,12 @@ const ruleForJS = {
   loader: 'babel-loader',
 };
 
-const rules = [ruleForJS, ruleForStyles];
+const rulesForImgs = {
+  test: /\.(png|svg|jpg|jpeg|gif)$/i,
+  type: 'asset/resource',
+};
+
+const rules = [ruleForJS, ruleForStyles, rulesForImgs];
 
 module.exports = {
   plugins: [
